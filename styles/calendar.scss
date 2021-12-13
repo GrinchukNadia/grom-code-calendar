@@ -1,0 +1,103 @@
+// стили сетки календаря и заголовка календаря с днями недели
+.calendar__header {
+  width: 100%;
+  // margin-left: 58px;
+  display: flex;
+  justify-content: stretch;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  background-color: rgb(248, 248, 248);
+  z-index: 34;
+  box-shadow: 0px -14px 29px -17px rgba(216, 216, 216, 0.5);
+
+  & > .empty {
+    width: 417px;
+    height: 123px;
+    box-shadow: 0px -1px 0px 0px rgb(216, 216, 216) inset;
+    // box-shadow: 33px 33px 0px -32px #000000,
+    //            -11px 12px 0px -11px #000000;
+  }
+  & > div {
+    display: flex;
+    width: 100%;
+    height: 123px;
+    flex-direction: column;
+    // border-bottom: 1px solid rgb(179, 179, 179);
+    // box-shadow: 33px 33px 0px -32px #000000,
+    //            -11px 12px 0px -11px #000000;
+    // border: 1px solid lightblue;
+    // padding: 40px;
+  }
+}
+.calendar__day-label {
+  position: relative;
+}
+// day-label__day-number currentDay
+.day-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__day-name {
+    margin-bottom: 4px;
+    font-size: 16px;
+  }
+  &__day-number {
+    font-size: 28px;
+    padding: 12px;
+    border-radius: 50%;
+    &.currentDay {
+      background-color: #519e9e;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      color: #ffffff;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+.header__botom-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  box-shadow: 0px -1px 0px 0px rgb(216, 216, 216) inset,
+    1px 0px 0px 0px rgb(216, 216, 216) inset;
+  // border-left: 2px solid rgb(216, 216, 216);
+}
+.calendar__body {
+  margin-top: 203px;
+}
+.calendar__week-container {
+  display: flex;
+}
+.calendar__week {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.calendar__day {
+  height: 100%;
+  width: 100%;
+  // border: 1px solid;
+}
+.calendar__time-slot {
+  position: relative;
+  height: 60px;
+  border-left: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+}
+.event {
+  position: absolute;
+  width: 90%;
+  z-index: 2;
+  border-radius: 1%;
+  padding: 12px;
+  left: 3px;
+  background-color: #bedfe5;
+  // height: 60px;
+  // box-shadow: -20px -20px 18px 29px #f3a9a9 inset;
+}

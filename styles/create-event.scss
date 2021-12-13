@@ -1,0 +1,84 @@
+// стили формы события внутри модального окна
+.modal__content{
+  position: relative;
+  // width: 70%;
+}
+.create-event__close-btn {
+  border: none;
+  background-color: transparent;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+.event-form {
+  display: flex;
+  flex-direction: column;
+
+  &__time {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &__field[name="title"] {
+    font-size: 24px;
+    border: none;
+    border-bottom: 2px solid #519e9e;
+    display: block;
+    width: 80%;
+    align-self: flex-end;
+    outline: none;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  
+  &__field {
+    border: none;
+    outline: none;
+    // margin-top: 40px;
+  }
+
+  &__submit-btn{
+    width: 140px;
+    align-self: flex-end;
+    border: none;
+    background-color: #519e9e;
+    padding: 8px 12px;
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 100;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 40px;
+  }
+
+}
+.date_time{
+  display: flex;
+  align-items: center;
+  margin-bottom: 100px;
+  margin-top: 60px;
+
+  & input[type="date"] {
+    width: 146px;
+    margin-right: 30px;
+  }
+}
+
+.time_container {
+  display: flex;
+  // border: 1px solid;
+  // justify-content: space-between;
+  align-items: center;
+  & input {
+    margin: 0;
+    width: 18%;
+    //  border: 1px solid lightblue;
+     
+   }
+   & span {
+     margin-right: 30px;
+   }
+}

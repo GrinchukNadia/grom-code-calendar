@@ -1,0 +1,12 @@
+// стили боковой временной шкалы
+.calendar__time-scale {
+  width: 60px;
+}
+.time-slot {
+  // border: 1px solid lightgray;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  font-size: 12px;
+}
