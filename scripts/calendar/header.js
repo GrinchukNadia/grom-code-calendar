@@ -1,56 +1,56 @@
 import { getItem } from '../common/storage.js';
 import { generateWeekRange } from '../common/time.utils.js';
 import { openModal } from '../common/modal.js';
+import { timeIndicator } from '../common/timeIndicator.js';
 
 const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
-// на основе displayedWeekStart из storage с помощью generateWeekRange сформируйте массив дней текущей недели
-// на основе полученного массива сформируйте разметку в виде строки - 7 дней (день недели и число в месяце)
-// полученную разметку вставить на страницу с помощью innerHTML в .calendar__header
-// в дата атрибуте каждой ячейки должно хранить для какого часа эта ячейка
 export const renderHeader = () => {
   const calendarHeaderEll = document.querySelector('.calendar__header');
-  const result = generateWeekRange(getItem('displayedWeekStart'));
-  // console.log('in header', result)
+  const weekRange = generateWeekRange(getItem('displayedWeekStart'));
 
-  const newArr = result.map((el, i) => {
+  const headerElements = weekRange.map((dateInWeek, i) => {
     const currentDay = `
       ${new Date().getFullYear()}:
       ${new Date().getMonth()}:
       ${new Date().getDate()}
     `;
     const dayInWeek = `
-      ${new Date(el).getFullYear()}:
-      ${new Date(el).getMonth()}:
-      ${new Date(el).getDate()}
+      ${new Date(dateInWeek).getFullYear()}:
+      ${new Date(dateInWeek).getMonth()}:
+      ${new Date(dateInWeek).getDate()}
     `;
+    const isToday =
+      currentDay === dayInWeek
+        ? `<span class="day-label__day-number currentDay">${new Date(
+            dateInWeek
+          ).getDate()}</span>`
+        : `<span class="day-label__day-number">${new Date(
+            dateInWeek
+          ).getDate()}</span>`;
+
+    if (currentDay === dayInWeek) {
+      timeIndicator();
+    }
 
     return `
       <div class="calendar__day-label day-label">
         <span class="header__botom-border"></span>
         <span class="day-label__day-name">${
-          daysOfWeek[new Date(result[i]).getDay()]
+          daysOfWeek[new Date(weekRange[i]).getDay()]
         }</span>
-        ${
-          currentDay === dayInWeek
-            ? `<span class="day-label__day-number currentDay">${new Date(
-                el
-              ).getDate()}</span>`
-            : `<span class="day-label__day-number">${new Date(
-                el
-              ).getDate()}</span>`
-        }
-        
-        </div>
-        `;
+        ${isToday}
+      </div>`;
   });
+
   const emptyCell = document.createElement('div');
   emptyCell.classList.add('empty');
 
-  calendarHeaderEll.innerHTML = newArr.join(' ');
+  calendarHeaderEll.innerHTML = headerElements.join(' ');
   calendarHeaderEll.prepend(emptyCell);
 };
 
-// при клике на кнопку "Create" открыть модальное окно с формой для создания события
-// назначьте здесь обработчик
-openModal();
+const creatEventBtn = document.querySelector('.create-event-btn');
+creatEventBtn.addEventListener('click', () => {
+  openModal();
+});

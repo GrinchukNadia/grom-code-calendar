@@ -3,10 +3,13 @@
   width: 60px;
 }
 .time-slot {
-  // border: 1px solid lightgray;
   height: 60px;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: flex-end;
   font-size: 12px;
+
+  &__time {
+    margin-bottom: -7px;
+  }
 }

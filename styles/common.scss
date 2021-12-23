@@ -1,10 +1,10 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 20px 0;
+  padding: 8px 0;
   position: fixed;
   background-color: #f8f8f8;
-  z-index: 3;
+  z-index: 34;
   width: 100%;
   border-bottom: 1px solid;
 }
@@ -82,7 +82,29 @@
     padding: 16px;
     border: 1px solid #ccc;
     border-radius: 8px;
+    width: 32%;
+
+    &_icons {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+
+      i {
+        margin-left: 20px;
+        cursor: pointer;
+      }
+    }
+    
+    
   }
+}
+.event__header {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+.event__date-time {
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .hidden {

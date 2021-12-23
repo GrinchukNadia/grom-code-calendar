@@ -5,7 +5,7 @@
   display: flex;
   justify-content: stretch;
   position: fixed;
-  top: 80px;
+  top: 56px;
   left: 0;
   background-color: rgb(248, 248, 248);
   z-index: 34;
@@ -13,7 +13,7 @@
 
   & > .empty {
     width: 417px;
-    height: 123px;
+    height: 100px;
     box-shadow: 0px -1px 0px 0px rgb(216, 216, 216) inset;
     // box-shadow: 33px 33px 0px -32px #000000,
     //            -11px 12px 0px -11px #000000;
@@ -21,7 +21,7 @@
   & > div {
     display: flex;
     width: 100%;
-    height: 123px;
+    height: 100px;
     flex-direction: column;
     // border-bottom: 1px solid rgb(179, 179, 179);
     // box-shadow: 33px 33px 0px -32px #000000,
@@ -69,7 +69,7 @@
   // border-left: 2px solid rgb(216, 216, 216);
 }
 .calendar__body {
-  margin-top: 203px;
+  margin-top: 156px;
 }
 .calendar__week-container {
   display: flex;
@@ -80,6 +80,7 @@
   display: flex;
 }
 .calendar__day {
+  position: relative;
   height: 100%;
   width: 100%;
   // border: 1px solid;
@@ -98,6 +99,10 @@
   padding: 12px;
   left: 3px;
   background-color: #bedfe5;
+
   // height: 60px;
-  // box-shadow: -20px -20px 18px 29px #f3a9a9 inset;
+  box-shadow: 0px -1px 0px 0px #ffffff inset, 
+              0px 1px 0px 0px #ffffff inset;
 }
+
+

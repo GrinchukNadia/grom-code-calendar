@@ -48,23 +48,11 @@
                                 <input type="date" name="date" class="event-form__field " id="datepicker" />
                                 
                                 <div class="time_container">
-                                    <input placeholder="08:30" style="display: inline-block; cursor: pointer;" list="time_intervals"  name="startTime" class="event-form__field" />
-                                    <datalist id="time_intervals">
-                                        <option value="00:00">
-                                        <option value="00:15">
-                                        <option value="00:30">
-                                        <option value="00:45">
-                                        <option value="01:00">
-                                    </datalist>
+                                    <input autocomplete="off" placeholder list="time_intervalsStart"  name="startTime" class="event-form__field" />
+                                    <datalist id="time_intervalsStart"></datalist>
                                     <span>-</span>
-                                    <input placeholder="08:45" style="display: inline-block; cursor: pointer;" list="time_intervals"  name="startTime" class="event-form__field" />
-                                    <datalist id="time_intervals">
-                                        <option value="00:00">
-                                        <option value="00:15">
-                                        <option value="00:30">
-                                        <option value="00:45">
-                                        <option value="01:00">
-                                    </datalist>
+                                    <input autocomplete="off" placeholder list="time_intervalsEnd"  name="endTime" class="event-form__field" />
+                                    <datalist id="time_intervalsEnd"></datalist>
                                 </div>
                             </div>
                         </div>
@@ -77,12 +65,28 @@
     <div class="popup hidden overlay">
         <div class="popup__overlay"></div>
         <div class="popup__content">
-            <button class="delete-event-btn">Delete</button>
+            <div class="popup__content_icons">
+                <i class="fas fa-pen edit-event-btn"></i>
+                <i class="fas fa-trash-alt delete-event-btn"></i>
+            </div>
+            <div class="poput__content_event">
+                <div class="event__header">
+                    (Нет заголовка)
+                </div>
+                <div class="event__date-time">
+                    <span class="event__date-time_date"></span>
+                    <span> ⋅ </span>
+                    <span class="event__date-time_time">6:00–7:00PM</span>
+                </div>
+                <div class="event__description">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam nihil repudiandae, voluptatibus mollitia velit expedita officia tempore, consequatur vitae id qui sunt in magni, error aliquid ab repellendus unde perspiciatis.
+                </div>
+            </div>
         </div>
         </div>
     </div>
     <script src="scripts/index.js" type="module"></script>
-
+<!--  -->
 </body>
 
 </html>

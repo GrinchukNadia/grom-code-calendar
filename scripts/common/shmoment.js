@@ -42,7 +42,4 @@ const shmoment = date => {
     return calculator;
 };
 
-// let now = shmoment('12-11-2021')
-// console.log(now.subtract('years', 3).result());
-
 export default shmoment;

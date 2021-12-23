@@ -5,9 +5,9 @@ import { initNavigation } from './header/navigation.js';
 import { setItem } from './common/storage.js';
 import { getStartOfWeek } from './common/time.utils.js';
 import { initEventForm } from './events/createEvent.js';
+import { updateLinePosition } from './common/timeIndicator.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-
   const todayBtn = document.querySelector('[data-direction="today"]');
   todayBtn.addEventListener('click', () => {
     setItem('displayedWeekStart', getStartOfWeek(new Date()));
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // генерирует сетку недели с днями и временными слотами. Добавляет все события текущей недели
   renderWeek();
-
+  
   // генерирует день недели с числом + добавляет попап для кнопки creat
   renderHeader();
 
@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
 
   // при нажатии на create кнопку создает событие и добавляет его в storage
-    initEventForm();
+  initEventForm();
+  updateLinePosition();
 
 });

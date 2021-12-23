@@ -1,7 +1,8 @@
 // стили формы события внутри модального окна
-.modal__content{
+.modal__content {
   position: relative;
-  // width: 70%;
+  border: none;
+  box-shadow: 2px 2px 26px 22px rgba(119, 119, 119, 0.123);
 }
 .create-event__close-btn {
   border: none;
@@ -19,9 +20,10 @@
   &__time {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
-  
-  &__field[name="title"] {
+
+  &__field[name='title'] {
     font-size: 24px;
     border: none;
     border-bottom: 2px solid #519e9e;
@@ -32,14 +34,14 @@
     margin-top: 20px;
     margin-bottom: 40px;
   }
-  
+
   &__field {
     border: none;
     outline: none;
-    // margin-top: 40px;
+    appearance: none;
   }
 
-  &__submit-btn{
+  &__submit-btn {
     width: 140px;
     align-self: flex-end;
     border: none;
@@ -53,32 +55,44 @@
     cursor: pointer;
     margin-top: 40px;
   }
-
 }
-.date_time{
+.not-valid {
+  font-size: 12px;
+  color: red;
+  position: absolute;
+  top: 94px;
+  right: 0;
+}
+.date_time {
   display: flex;
   align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
   margin-top: 60px;
 
-  & input[type="date"] {
+  & input[type='date'] {
     width: 146px;
     margin-right: 30px;
+    border-bottom: 1px solid lightgray;
+  }
+  & input[type='date']::placeholder {
+    color: gray;
   }
 }
 
 .time_container {
   display: flex;
-  // border: 1px solid;
-  // justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid lightgray;
   align-items: center;
   & input {
     margin: 0;
-    width: 18%;
-    //  border: 1px solid lightblue;
-     
-   }
-   & span {
-     margin-right: 30px;
-   }
+    width: 80px;
+  }
+  & span {
+    margin-right: 30px;
+  }
+}
+
+.popup__overlay{
+  width: 40%;
 }
