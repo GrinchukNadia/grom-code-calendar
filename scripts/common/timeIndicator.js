@@ -1,7 +1,9 @@
 const linePosition = () => {
   const timeInMinuts = new Date().getMinutes() + new Date().getHours() * 60;
-
-  document.querySelector('.line').style.top = `${+timeInMinuts}px`;
+  const lineElement = document.querySelector('.line')
+  if (lineElement) {
+    lineElement.style.top = `${+timeInMinuts}px`;
+  }
 };
 
 export function updateLinePosition() {

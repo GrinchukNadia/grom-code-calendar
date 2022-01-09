@@ -1,18 +1,19 @@
+@import 'variables.scss';
+
 .header {
   display: flex;
   align-items: center;
   padding: 8px 0;
   position: fixed;
-  background-color: #f8f8f8;
+  background-color: $headers-color;
   z-index: 34;
   width: 100%;
-  border-bottom: 1px solid;
+  height: $header-height;
 }
-
 .button {
   height: 40px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: $dark-grey-border;
   outline: none;
   cursor: pointer;
   font-size: 16px;
@@ -25,7 +26,7 @@
     border-radius: 100px;
 
     &:hover {
-        box-shadow: 2px 2px 5px 1px #dadada;
+        box-shadow: $button-hover;
     }
 }
 .navigation__today-btn {
@@ -33,24 +34,18 @@
     padding-left: 25px;
     padding-right: 25px;
     &:hover {
-        box-shadow: 2px 2px 5px 1px #dadada;
+        box-shadow: $button-hover;
     }
 }
 .create-event-btn__icon {
     margin-right: 12px;
 }
-// [data-direction="prev"] {
-//     margin-left: 12px;
-// }
-
-
 .icon-button {
   outline: none;
   border: none;
   cursor: pointer;
   background: transparent;
 }
-
 .modal {
   position: fixed;
   display: flex;
@@ -58,29 +53,27 @@
   align-items: center;
 
   &__content {
-    background: #fff;
+    background: $white-color;
     padding: 16px;
-    border: 1px solid #ccc;
+    border: $dark-grey-border;
     border-radius: 8px;
   }
 }
-
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #cccccc45;
+  background-color: $overlay-color;
   z-index: 37;
 }
-
 .popup {
   &__content {
     position: absolute;
-    background: #fff;
+    background: $white-color;
     padding: 16px;
-    border: 1px solid #ccc;
+    border: $dark-grey-border;
     border-radius: 8px;
     width: 32%;
 
@@ -94,8 +87,6 @@
         cursor: pointer;
       }
     }
-    
-    
   }
 }
 .event__header {
@@ -106,7 +97,6 @@
   font-size: 14px;
   margin-bottom: 20px;
 }
-
 .hidden {
   display: none;
 }

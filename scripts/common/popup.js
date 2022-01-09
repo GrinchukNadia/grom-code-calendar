@@ -1,6 +1,3 @@
-import { getItem, setItem } from './storage.js';
-import { getDisplayedDay } from './time.utils.js';
-
 const popupElem = document.querySelector('.popup');
 const popupContentElem = document.querySelector('.popup__content');
 
@@ -15,7 +12,6 @@ function disableScroll() {
 function enableScroll() {
   window.onscroll = function () {};
 }
-
 
 export function openPopup(x, y) {
   popupElem.classList.remove('hidden');

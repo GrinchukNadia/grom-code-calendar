@@ -1,10 +1,11 @@
 import { timeSelectElements } from '../calendar/timeSelect.js';
+import { getDateValues } from '../events/date.utils.js';
 import { openModal } from './modal.js';
 import { roundToTimeRange } from './time.utils.js';
 
 const timeIntervalStart = document.querySelector('#time_intervalsStart');
 const allDayEl = timeSelectElements();
-const timeRange = 15
+const timeRange = 15;
 
 Object.values(allDayEl).forEach((optionEl) => {
   timeIntervalStart.innerHTML += optionEl;
@@ -103,6 +104,7 @@ export function clearTime() {
 
 const calendarWeekElem = document.querySelector('.calendar__week');
 calendarWeekElem.addEventListener('click', (event) => {
+
   if (!event.target.closest('.event')) {
     openModal();
     const start = event.target.attributes['data-time'].value;
@@ -110,8 +112,20 @@ calendarWeekElem.addEventListener('click', (event) => {
     const timeEnd = `${+start + 1}:00`;
     const day = event.target.parentNode.attributes['data-day'].value;
 
+    const currentMonth =
+      day < 7 && getDateValues('months').length > 1
+        ? getDateValues('months')[1]
+        : getDateValues('months')[0];
+
+    const currentYear =
+      getDateValues('years').length > 1 && day < 7
+        ? getDateValues('years')[1]
+        : getDateValues('years')[0];
+
     timeStartEl.placeholder = `${timeStart}`;
     timeEndEl.placeholder = `${timeEnd}`;
-    datePickerEl.value = `${yearNow}-${monthNow + 1}-${day}`;
+    datePickerEl.value = `${currentYear}-${
+      currentMonth + 1 < 10 ? `0${+currentMonth + 1}` : +currentMonth + 1
+    }-${day < 10 ? `0${day}` : day}`;
   }
 });

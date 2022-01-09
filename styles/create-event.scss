@@ -1,8 +1,9 @@
-// стили формы события внутри модального окна
+@import 'variables.scss';
+
 .modal__content {
   position: relative;
   border: none;
-  box-shadow: 2px 2px 26px 22px rgba(119, 119, 119, 0.123);
+  box-shadow: $modal-box-shadow
 }
 .create-event__close-btn {
   border: none;
@@ -26,7 +27,7 @@
   &__field[name='title'] {
     font-size: 24px;
     border: none;
-    border-bottom: 2px solid #519e9e;
+    border-bottom: 2px solid $accent-color;
     display: block;
     width: 80%;
     align-self: flex-end;
@@ -45,10 +46,10 @@
     width: 140px;
     align-self: flex-end;
     border: none;
-    background-color: #519e9e;
+    background-color: $accent-color;
     padding: 8px 12px;
     font-size: 20px;
-    color: #ffffff;
+    color: $white-color;
     font-weight: 100;
     letter-spacing: 1px;
     border-radius: 6px;
@@ -58,7 +59,7 @@
 }
 .not-valid {
   font-size: 12px;
-  color: red;
+  color: $not-valid-color;
   position: absolute;
   top: 94px;
   right: 0;
@@ -72,17 +73,16 @@
   & input[type='date'] {
     width: 146px;
     margin-right: 30px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: $input-bortder-bottom;
   }
   & input[type='date']::placeholder {
-    color: gray;
+    color: $input-placeholder-color;
   }
 }
-
 .time_container {
   display: flex;
   width: 100%;
-  border-bottom: 1px solid lightgray;
+  border-bottom: $input-bortder-bottom;
   align-items: center;
   & input {
     margin: 0;
@@ -92,7 +92,6 @@
     margin-right: 30px;
   }
 }
-
 .popup__overlay{
   width: 40%;
 }

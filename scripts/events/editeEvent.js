@@ -47,7 +47,9 @@ export function editEvent(eventId) {
     timeEndEl.placeholder = ``;
     timeEndEl.placeholder = `${timeEnd}`;
     timeStartEl.placeholder = `${timeStart}`;
-    datePickerEl.value = `${yearNow}-${monthNow + 1}-${dayNow}`;
+    datePickerEl.value = `${yearNow}-${
+      monthNow + 1 < 10 ? `0${monthNow + 1}` : monthNow + 1
+    }-${dayNow < 10 ? `0${dayNow}` : dayNow}`;
     description.value = currentEvent.description;
     titleEl.value = currentEvent.title;
   });

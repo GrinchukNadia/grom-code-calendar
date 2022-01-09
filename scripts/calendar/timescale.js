@@ -4,7 +4,7 @@ export const renderTimescale = () => {
     const calendarTimescaleElem = document.querySelector(
       '.calendar__time-scale'
     );
-    const timeScale = createNumbersArray(1, 23)
+    const timeScale = createNumbersArray(1, 24)
     const timeScaleMarkup = timeScale.map(hour => {
         return `
             <div class="time-slot">

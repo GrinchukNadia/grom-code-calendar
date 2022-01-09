@@ -12,9 +12,6 @@ const displayedMonthElem = document.querySelector(
 function renderCurrentMonth() {
   const result = getDisplayedMonth(getItem('displayedWeekStart'));
   displayedMonthElem.innerHTML = result;
-
-  // отрисовать месяц, к которому относиться текущая неделя (getDisplayedMonth)
-  // вставить в .navigation__displayed-month
 }
 
 const onChangeWeek = (event) => {
@@ -42,8 +39,6 @@ const onChangeWeek = (event) => {
     renderHeader();
     renderCurrentMonth();
   }
-  // при переключении недели обновите displayedWeekStart в storage
-  // и перерисуйте все необходимые элементы страницы (renderHeader, renderWeek, renderCurrentMonth)
 };
 
 export const initNavigation = () => {

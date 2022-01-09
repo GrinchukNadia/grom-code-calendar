@@ -1,58 +1,53 @@
-// стили сетки календаря и заголовка календаря с днями недели
+@import 'variables.scss';
+
 .calendar__header {
   width: 100%;
-  // margin-left: 58px;
   display: flex;
   justify-content: stretch;
   position: fixed;
-  top: 56px;
+  top: $header-height;
   left: 0;
-  background-color: rgb(248, 248, 248);
+  background-color: $headers-color;
   z-index: 34;
-  box-shadow: 0px -14px 29px -17px rgba(216, 216, 216, 0.5);
+  box-shadow: 0px -14px 29px -17px #d8d8d880;
 
   & > .empty {
     width: 417px;
-    height: 100px;
-    box-shadow: 0px -1px 0px 0px rgb(216, 216, 216) inset;
-    // box-shadow: 33px 33px 0px -32px #000000,
-    //            -11px 12px 0px -11px #000000;
+    height: $calendar-header-height;
+    box-shadow: 0px -1px 0px 0px #d8d8d8 inset;
   }
   & > div {
     display: flex;
     width: 100%;
-    height: 100px;
+    height:$calendar-header-height;
     flex-direction: column;
-    // border-bottom: 1px solid rgb(179, 179, 179);
-    // box-shadow: 33px 33px 0px -32px #000000,
-    //            -11px 12px 0px -11px #000000;
-    // border: 1px solid lightblue;
-    // padding: 40px;
   }
 }
 .calendar__day-label {
   position: relative;
 }
-// day-label__day-number currentDay
 .day-label {
   display: flex;
   align-items: center;
   justify-content: center;
+
   &__day-name {
     margin-bottom: 4px;
     font-size: 16px;
   }
+
   &__day-number {
     font-size: 28px;
     padding: 12px;
     border-radius: 50%;
+    
     &.currentDay {
-      background-color: #519e9e;
+      background-color: $accent-color;
       border-radius: 50%;
       width: 50px;
       height: 50px;
       display: flex;
-      color: #ffffff;
+      color: $white-color;
       align-items: center;
       justify-content: center;
     }
@@ -63,13 +58,12 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40px;
+  height: $calendar-header-divider-height;
   box-shadow: 0px -1px 0px 0px rgb(216, 216, 216) inset,
     1px 0px 0px 0px rgb(216, 216, 216) inset;
-  // border-left: 2px solid rgb(216, 216, 216);
 }
 .calendar__body {
-  margin-top: 156px;
+  margin-top: ($header-height + $calendar-header-height);
 }
 .calendar__week-container {
   display: flex;
@@ -83,13 +77,12 @@
   position: relative;
   height: 100%;
   width: 100%;
-  // border: 1px solid;
 }
 .calendar__time-slot {
   position: relative;
   height: 60px;
-  border-left: 1px solid #d8d8d8;
-  border-bottom: 1px solid #d8d8d8;
+  border-left: $day-border;
+  border-bottom: $day-border;
 }
 .event {
   position: absolute;
@@ -98,11 +91,6 @@
   border-radius: 1%;
   padding: 12px;
   left: 3px;
-  background-color: #bedfe5;
-
-  // height: 60px;
-  box-shadow: 0px -1px 0px 0px #ffffff inset, 
-              0px 1px 0px 0px #ffffff inset;
+  background-color: $event-background-color;
+  box-shadow: $event-divider;
 }
-
-

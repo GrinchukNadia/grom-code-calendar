@@ -10,7 +10,6 @@ const generateDay = () => {
           </div>
         `
     })
-
     return timeSlotElements.join(' ');
 };
 
