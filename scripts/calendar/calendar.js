@@ -1,7 +1,7 @@
 import { getItem } from '../common/storage.js';
 import { generateWeekRange } from '../common/time.utils.js';
-import { renderEvents } from '../events/events.js';
 import { createNumbersArray } from '../common/createNumbersArray.js';
+import { renderEvents } from '../events/renderEvents.js';
 
 const generateDay = () => {
     let timeSlotElements = createNumbersArray(0, 24).map(slotNumber => {

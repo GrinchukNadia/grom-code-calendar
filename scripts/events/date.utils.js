@@ -36,3 +36,11 @@ export function getDateValues(name) {
     return yearsArr
   }
 }
+
+export function addZeroBefore(number) {
+  return number < 10 ? `0${number}` : number
+}
+
+export function doubleZero(num) {
+  return num === 0 ? '00' : num;
+}

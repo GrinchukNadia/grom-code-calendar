@@ -1,5 +1,5 @@
 import { timeSelectElements } from '../calendar/timeSelect.js';
-import { getDateValues } from '../events/date.utils.js';
+import { addZeroBefore, getDateValues } from '../events/date.utils.js';
 import { openModal } from './modal.js';
 import { roundToTimeRange } from './time.utils.js';
 
@@ -124,8 +124,6 @@ calendarWeekElem.addEventListener('click', (event) => {
 
     timeStartEl.placeholder = `${timeStart}`;
     timeEndEl.placeholder = `${timeEnd}`;
-    datePickerEl.value = `${currentYear}-${
-      currentMonth + 1 < 10 ? `0${+currentMonth + 1}` : +currentMonth + 1
-    }-${day < 10 ? `0${day}` : day}`;
+    datePickerEl.value = `${currentYear}-${addZeroBefore(+currentMonth + 1)}-${addZeroBefore(day)}`;
   }
 });

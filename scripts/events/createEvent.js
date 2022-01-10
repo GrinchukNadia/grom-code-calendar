@@ -1,9 +1,9 @@
 import { getItem, setItem } from '../common/storage.js';
-import { renderEvents } from './events.js';
 import { getDateTime } from '../common/time.utils.js';
 import { closeModal } from '../common/modal.js';
 import { clearTime } from '../common/timePicker.js';
 import { eventValidator } from './eventValidation.js';
+import { renderEvents } from './renderEvents.js';
 
 const eventFormElem = document.querySelector('.event-form');
 const closeEventFormBtn = document.querySelector('.create-event__close-btn');
@@ -59,6 +59,6 @@ export function onCreateEvent(event) {
 
 export function initEventForm() {
   closeEventFormBtn.addEventListener('click', onCloseEventForm);
-  eventFormElem.addEventListener('change', eventValidator)
+  eventFormElem.addEventListener('change', eventValidator);
   eventFormElem.addEventListener('submit', onCreateEvent);
 }

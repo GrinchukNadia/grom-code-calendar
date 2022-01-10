@@ -1,6 +1,7 @@
-import { closePopup } from "../common/popup.js";
-import { getItem, setItem } from "../common/storage.js";
-import { getDisplayedDay } from "../common/time.utils.js";
+import { closePopup } from '../common/popup.js';
+import { getItem, setItem } from '../common/storage.js';
+import { getDisplayedDay } from '../common/time.utils.js';
+import { addZeroBefore, doubleZero } from './date.utils.js';
 
 const headerEl = document.querySelector('.event__header');
 const descriptionEl = document.querySelector('.event__description');
@@ -24,15 +25,15 @@ export function editEvent(eventId) {
   }, {});
 
   setItem('eventIdToDelete', eventId);
-  const dayNow = new Date(currentEvent.start).getDate();
-  const monthNow = new Date(currentEvent.start).getMonth();
+  const dayNow = addZeroBefore(new Date(currentEvent.start).getDate());
+  const monthNow = addZeroBefore(new Date(currentEvent.start).getMonth() + 1);
   const yearNow = new Date(currentEvent.start).getFullYear();
-  const timeStart = `${new Date(currentEvent.start).getHours()}:${new Date(
-    currentEvent.start
-  ).getMinutes()}`;
-  const timeEnd = `${new Date(currentEvent.end).getHours()}:${new Date(
-    currentEvent.end
-  ).getMinutes()}`;
+  const timeHoursStart = new Date(currentEvent.start).getHours();
+  const timeHoursEnd = new Date(currentEvent.end).getHours();
+  const timeMinutesStart = new Date(currentEvent.start).getMinutes();
+  const timeMinutesEnd = new Date(currentEvent.end).getMinutes();
+  const timeStart = `${timeHoursStart}:${doubleZero(timeMinutesStart)}`;
+  const timeEnd = `${timeHoursEnd}:${doubleZero(timeMinutesEnd)}`;
 
   headerEl.innerHTML = currentEvent.title;
   descriptionEl.innerHTML = currentEvent.description;
@@ -47,9 +48,7 @@ export function editEvent(eventId) {
     timeEndEl.placeholder = ``;
     timeEndEl.placeholder = `${timeEnd}`;
     timeStartEl.placeholder = `${timeStart}`;
-    datePickerEl.value = `${yearNow}-${
-      monthNow + 1 < 10 ? `0${monthNow + 1}` : monthNow + 1
-    }-${dayNow < 10 ? `0${dayNow}` : dayNow}`;
+    datePickerEl.value = `${yearNow}-${monthNow}-${dayNow}`;
     description.value = currentEvent.description;
     titleEl.value = currentEvent.title;
   });
