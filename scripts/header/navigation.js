@@ -1,7 +1,7 @@
 import { getItem, setItem } from '../common/storage.js';
 import { renderWeek } from '../calendar/calendar.js';
 import { renderHeader } from '../calendar/header.js';
-import { getStartOfWeek, getDisplayedMonth } from '../common/time.utils.js';
+import { getDisplayedMonth } from '../common/time.utils.js';
 import shmoment from '../common/shmoment.js';
 
 const navElem = document.querySelector('.navigation');

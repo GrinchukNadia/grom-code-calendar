@@ -1,4 +1,4 @@
-import { eventForm } from './timePicker.js';
+import { eventForm } from "../events/weekEvent.js";
 
 const modalElem = document.querySelector('.modal');
 

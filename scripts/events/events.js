@@ -4,7 +4,6 @@ import { renderWeek } from '../calendar/calendar.js';
 import { onCloseEventForm } from './createEvent.js';
 import { renderHeader } from '../calendar/header.js';
 import { editEvent } from './editeEvent.js';
-import { doubleZero, getDateValues } from './date.utils.js';
 
 const weekElem = document.querySelector('.calendar__week');
 const deleteEventBtn = document.querySelector('.delete-event-btn');

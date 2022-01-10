@@ -24,7 +24,6 @@ const createEventElement = (event) => {
   return eventElement;
 };
 
-
 export const renderEvents = () => {
   const weekElem = document.querySelector('.calendar__week');
 
