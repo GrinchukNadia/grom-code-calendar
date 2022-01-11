@@ -16,21 +16,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderTimescale();
-
-  // в storage устанавливает поле понедельника текущей недели. получаем при помощи функции getStartOfWeek
+  
   setItem('displayedWeekStart', getStartOfWeek(new Date()));
-
-  // генерирует сетку недели с днями и временными слотами. Добавляет все события текущей недели
+  
   renderWeek();
   
-  // генерирует день недели с числом + добавляет попап для кнопки creat
   renderHeader();
-
-  // отображает надпись месяца и года на самом верху. Во время перелистывания все перерисовывает на странице
+  
   initNavigation();
-
-  // при нажатии на create кнопку создает событие и добавляет его в storage
+  
   initEventForm();
   updateLinePosition();
-
+  
 });
+
+const onStorageChange = (e) => {
+  if (e.key === 'calendarStorage') {
+    renderWeek();
+    renderHeader();
+    initNavigation();
+  }
+};
+window.addEventListener('storage', onStorageChange);

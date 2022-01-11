@@ -36,9 +36,6 @@ export function onDeleteEvent() {
 
 deleteEventBtn.addEventListener('click', onDeleteEvent);
 
-// const weekElem = document.querySelector('.calendar__week');
-// weekElem.addEventListener('click', handleEventClick);
-
 const submitBtnEl = document.querySelector('.event-form__submit-btn');
 submitBtnEl.addEventListener('click', () => {
   const deleteId = getItem('eventIdToDelete');
