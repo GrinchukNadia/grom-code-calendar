@@ -5,10 +5,9 @@ import { onCloseEventForm } from './createEvent.js';
 import { renderHeader } from '../calendar/header.js';
 import { editEvent } from './editeEvent.js';
 
-const weekElem = document.querySelector('.calendar__week');
 const deleteEventBtn = document.querySelector('.delete-event-btn');
 
-function handleEventClick(event) {
+export function handleEventClick(event) {
   if (!event) {
     return;
   }
@@ -36,10 +35,11 @@ export function onDeleteEvent() {
 }
 
 deleteEventBtn.addEventListener('click', onDeleteEvent);
-weekElem.addEventListener('click', handleEventClick);
+
+// const weekElem = document.querySelector('.calendar__week');
+// weekElem.addEventListener('click', handleEventClick);
 
 const submitBtnEl = document.querySelector('.event-form__submit-btn');
-
 submitBtnEl.addEventListener('click', () => {
   const deleteId = getItem('eventIdToDelete');
   if (deleteId) {

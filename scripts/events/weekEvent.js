@@ -2,6 +2,7 @@ import { openModal } from "../common/modal.js";
 import { roundToTimeRange } from "../common/time.utils.js";
 import { timeEndEl, timeStartEl } from "../common/timePicker.js";
 import { addZeroBefore, getDateValues } from "./date.utils.js";
+import { handleEventClick } from "./events.js";
 
 const hoursNow = new Date().getHours();
 const minutsNow = new Date().getMinutes();
@@ -28,28 +29,31 @@ export function clearTime() {
 }
 
 const calendarWeekElem = document.querySelector('.calendar__week');
-calendarWeekElem.addEventListener('click', (event) => {
+function onWeekModal(event) {
   if (!event.target.closest('.event')) {
     openModal();
     const start = event.target.attributes['data-time'].value;
     const timeStart = `${start}:00`;
     const timeEnd = `${+start + 1}:00`;
     const day = event.target.parentNode.attributes['data-day'].value;
-
+  
     const currentMonth =
       day < 7 && getDateValues('months').length > 1
         ? getDateValues('months')[1]
         : getDateValues('months')[0];
-
+  
     const currentYear =
       getDateValues('years').length > 1 && day < 7
         ? getDateValues('years')[1]
         : getDateValues('years')[0];
-
+  
     timeStartEl.placeholder = `${timeStart}`;
     timeEndEl.placeholder = `${timeEnd}`;
     datePickerEl.value = `${currentYear}-${addZeroBefore(
       +currentMonth + 1
     )}-${addZeroBefore(day)}`;
   }
-});
+}
+
+calendarWeekElem.addEventListener('click', onWeekModal);
+calendarWeekElem.addEventListener('click', handleEventClick);

@@ -25,7 +25,7 @@ const createEventElement = (event) => {
 };
 
 export const renderEvents = () => {
-  const weekElem = document.querySelector('.calendar__week');
+  const weekElement = document.querySelector('.calendar__week');
 
   const allEvents = getItem('events');
 
@@ -42,7 +42,7 @@ export const renderEvents = () => {
   });
 
   filteredEvents.forEach((el) => {
-    const dayData = weekElem.querySelector(
+    const dayData = weekElement.querySelector(
       `[data-day="${new Date(el.start).getDate()}"]`
     );
     const time = new Date(el.start).getHours();
