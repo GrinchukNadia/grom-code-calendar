@@ -16,18 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderTimescale();
-  
   setItem('displayedWeekStart', getStartOfWeek(new Date()));
   
   renderWeek();
-  
   renderHeader();
-  
   initNavigation();
-  
   initEventForm();
+
   updateLinePosition();
-  
 });
 
 const onStorageChange = (e) => {
@@ -35,6 +31,7 @@ const onStorageChange = (e) => {
     renderWeek();
     renderHeader();
     initNavigation();
+    initEventForm();
   }
 };
 window.addEventListener('storage', onStorageChange);
