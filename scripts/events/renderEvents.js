@@ -13,7 +13,7 @@ const createEventElement = (event) => {
   const eventElement = document.createElement('div');
   eventElement.classList.add('event');
   eventElement.setAttribute('data-event-id', event.id);
-  eventElement.style = `height: ${dayInMinutes}px; top: ${minutsStart}px`;
+  eventElement.style = `height: ${dayInMinutes}px; top: ${minutsStart}px; background-color: ${event.color}`;
 
   eventElement.innerHTML = `
         <div class="event__title">${event.title}</div>

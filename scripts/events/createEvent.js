@@ -20,6 +20,19 @@ function clearEventForm() {
   startTimeElem.value = '';
   endTimeElem.value = '';
   descriptionElem.value = '';
+
+  const allUncheck = document.querySelectorAll('.check');
+  allUncheck.forEach((el, i) => {
+    if( i + 1 === 7) {
+      el.classList.remove('check-hidden');
+      el.nextElementSibling.classList.add('chosen');
+      const colorChoosedElem = document.querySelector('.color__editor-choosed');
+      colorChoosedElem.style.backgroundColor = '#519e9e';
+    }
+    el.classList.add('check-hidden');
+    el.nextElementSibling.classList.remove('chosen');
+
+  });
 }
 
 export function onCloseEventForm() {
@@ -39,6 +52,10 @@ export function onCreateEvent(event) {
   const description = descriptionElem.value;
   const start = getDateTime(date, startTime);
   const end = getDateTime(date, endTime);
+  const eventColorElem = document.querySelector('.color__editor-choosed');
+  console.log(eventColorElem.style.backgroundColor);
+
+  const color = eventColorElem.style.backgroundColor || '#519e9e';
 
   const eventsAll = getItem('events');
 
@@ -48,6 +65,7 @@ export function onCreateEvent(event) {
     description,
     start,
     end,
+    color,
   };
 
   eventsAll.push(newEvent);

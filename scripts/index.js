@@ -6,6 +6,8 @@ import { setItem } from './common/storage.js';
 import { getStartOfWeek } from './common/time.utils.js';
 import { initEventForm } from './events/createEvent.js';
 import { updateLinePosition } from './common/timeIndicator.js';
+import { chooseColor } from './common/chooseColor.js';
+import { createColorPicker } from './common/colorPicker.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const todayBtn = document.querySelector('[data-direction="today"]');
@@ -22,8 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
   renderHeader();
   initNavigation();
   initEventForm();
-
+  createColorPicker()
+  
   updateLinePosition();
+  chooseColor()
 });
 
 const onStorageChange = (e) => {
@@ -32,6 +36,7 @@ const onStorageChange = (e) => {
     renderHeader();
     initNavigation();
     initEventForm();
+    createColorPicker()
   }
 };
 window.addEventListener('storage', onStorageChange);
