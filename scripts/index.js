@@ -2,7 +2,7 @@ import { renderTimescale } from './calendar/timescale.js';
 import { renderWeek } from './calendar/calendar.js';
 import { renderHeader } from './calendar/header.js';
 import { initNavigation } from './header/navigation.js';
-import { setItem } from './common/storage.js';
+import { inintStorage, setItem } from './common/storage.js';
 import { getStartOfWeek } from './common/time.utils.js';
 import { initEventForm } from './events/createEvent.js';
 import { updateLinePosition } from './common/timeIndicator.js';
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderHeader();
   });
 
+  inintStorage();
   renderTimescale();
   setItem('displayedWeekStart', getStartOfWeek(new Date()));
   
