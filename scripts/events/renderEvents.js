@@ -1,4 +1,4 @@
-import { getItem } from '../common/storage.js';
+import { getTasksList } from '../common/storage.js';
 import { getDateValues, doubleZero } from './date.utils.js';
 
 const createEventElement = (event) => {
@@ -24,10 +24,11 @@ const createEventElement = (event) => {
   return eventElement;
 };
 
-export const renderEvents = () => {
+export const renderEvents = async () => {
   const weekElement = document.querySelector('.calendar__week');
 
-  const allEvents = getItem('events');
+  const allEvents = await getTasksList();
+  console.log(allEvents)
 
   const filteredEvents = allEvents.filter((value) => {
     const fullYearOfEvent = new Date(value.start).getFullYear();
@@ -47,6 +48,7 @@ export const renderEvents = () => {
     );
     const time = new Date(el.start).getHours();
     let timeData = dayData.querySelector(`[data-time="${time}"]`);
+    timeData.innerHTML = ''
     timeData.append(createEventElement(el));
   });
 };

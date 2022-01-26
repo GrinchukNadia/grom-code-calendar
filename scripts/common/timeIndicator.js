@@ -14,7 +14,6 @@ export function updateLinePosition() {
 
   setTimeout(() => {
     linePosition();
-    updateLinePosition();
   }, timeToNextUpdate);
 }
 

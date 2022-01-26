@@ -1,5 +1,4 @@
-import { getItem } from '../common/storage.js';
-import { generateWeekRange } from '../common/time.utils.js';
+import { generateWeekRange, getStartOfWeek } from '../common/time.utils.js';
 import { createNumbersArray } from '../common/createNumbersArray.js';
 import { renderEvents } from '../events/renderEvents.js';
 
@@ -13,17 +12,24 @@ const generateDay = () => {
     return timeSlotElements.join(' ');
 };
 
-export const renderWeek = () => {
-    const weekEl = document.querySelector('.calendar__week');
-    const datesOfWeek = generateWeekRange(getItem('displayedWeekStart'));
+export const renderWeek = (weekDate) => {
+  const weekEl = document.querySelector('.calendar__week');
 
-    const weekMarkup = datesOfWeek.map(dayDate => {
-        return `
+  let datesOfWeek = []
+
+  if(!weekDate) {
+    datesOfWeek = generateWeekRange(getStartOfWeek(new Date()))
+  } else {
+    datesOfWeek = generateWeekRange(weekDate);
+  }
+
+    const weekMarkup = datesOfWeek.map((dayDate) => {
+      return `
           <div class="calendar__day" data-day="${new Date(dayDate).getDate()}">
             ${generateDay()}
           </div>
-        `
-    })
+        `;
+    });
 
     weekEl.innerHTML = weekMarkup.join(' ')
     renderEvents()

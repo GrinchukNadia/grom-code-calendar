@@ -1,7 +1,7 @@
-import { getItem } from '../common/storage.js';
+import { getStartOfWeek } from '../common/time.utils.js';
 
 export function getDateValues(name) {
-  const monday = getItem('displayedWeekStart');
+  const monday = getStartOfWeek(new Date());
   const startOfWeek = new Date(monday).getDate();
   const monthOfWeek = new Date(monday).getMonth();
   const fullYearOfWeek = new Date(monday).getFullYear();

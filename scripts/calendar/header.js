@@ -1,13 +1,19 @@
-import { getItem } from '../common/storage.js';
-import { generateWeekRange } from '../common/time.utils.js';
+import { generateWeekRange, getStartOfWeek } from '../common/time.utils.js';
 import { openModal } from '../common/modal.js';
 import { timeIndicator } from '../common/timeIndicator.js';
 
 const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
-export const renderHeader = () => {
+export const renderHeader = (weekDate) => {
+
   const calendarHeaderEll = document.querySelector('.calendar__header');
-  const weekRange = generateWeekRange(getItem('displayedWeekStart'));
+  let weekRange = [];
+  
+    if (!weekDate) {
+      weekRange = generateWeekRange(getStartOfWeek(new Date()));
+    } else {
+      weekRange = generateWeekRange(weekDate);
+    }
 
   const headerElements = weekRange.map((dateInWeek, i) => {
     const currentDay = `
@@ -52,5 +58,5 @@ export const renderHeader = () => {
 
 const creatEventBtn = document.querySelector('.create-event-btn');
 creatEventBtn.addEventListener('click', () => {
-  openModal();
+  openModal('createBtn');
 });

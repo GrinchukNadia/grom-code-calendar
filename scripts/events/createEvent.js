@@ -1,9 +1,10 @@
-import { getItem, setItem } from '../common/storage.js';
+import { createTask, updateTask} from '../common/storage.js';
 import { getDateTime } from '../common/time.utils.js';
 import { closeModal } from '../common/modal.js';
 import { eventValidator } from './eventValidation.js';
 import { renderEvents } from './renderEvents.js';
 import { clearTime } from './weekEvent.js';
+import { renderWeek } from '../calendar/calendar.js';
 
 const eventFormElem = document.querySelector('.event-form');
 const closeEventFormBtn = document.querySelector('.create-event__close-btn');
@@ -41,9 +42,8 @@ export function onCloseEventForm() {
   clearEventForm();
 }
 
-export function onCreateEvent(event) {
+export const onCreateEvent = async (event, id) => {
   event.preventDefault();
-
   const date = dateElem.value;
   const startTime =
     startTimeElem.value || startTimeElem.attributes.placeholder.value;
@@ -53,11 +53,7 @@ export function onCreateEvent(event) {
   const start = getDateTime(date, startTime);
   const end = getDateTime(date, endTime);
   const eventColorElem = document.querySelector('.color__editor-choosed');
-  console.log(eventColorElem.style.backgroundColor);
-
   const color = eventColorElem.style.backgroundColor || '#519e9e';
-
-  const eventsAll = getItem('events');
 
   const newEvent = {
     id: Date.now(),
@@ -68,15 +64,20 @@ export function onCreateEvent(event) {
     color,
   };
 
-  eventsAll.push(newEvent);
-
-  setItem('events', eventsAll);
-  onCloseEventForm();
-  renderEvents();
+   if (id) {
+     await updateTask(newEvent, id)
+     onCloseEventForm();
+     renderWeek();
+     renderEvents();
+   } 
+   if(!id) {
+     await createTask(newEvent)
+     onCloseEventForm();
+     renderEvents();
+   }
 }
 
 export function initEventForm() {
   closeEventFormBtn.addEventListener('click', onCloseEventForm);
   eventFormElem.addEventListener('change', eventValidator);
-  eventFormElem.addEventListener('submit', onCreateEvent);
 }
