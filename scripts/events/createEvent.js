@@ -1,4 +1,4 @@
-import { createTask, updateTask} from '../common/storage.js';
+import { createTask, updateTask } from '../common/storage.js';
 import { getDateTime } from '../common/time.utils.js';
 import { closeModal } from '../common/modal.js';
 import { eventValidator } from './eventValidation.js';
@@ -24,7 +24,7 @@ function clearEventForm() {
 
   const allUncheck = document.querySelectorAll('.check');
   allUncheck.forEach((el, i) => {
-    if( i + 1 === 7) {
+    if (i + 1 === 7) {
       el.classList.remove('check-hidden');
       el.nextElementSibling.classList.add('chosen');
       const colorChoosedElem = document.querySelector('.color__editor-choosed');
@@ -32,7 +32,6 @@ function clearEventForm() {
     }
     el.classList.add('check-hidden');
     el.nextElementSibling.classList.remove('chosen');
-
   });
 }
 
@@ -64,18 +63,26 @@ export const onCreateEvent = async (event, id) => {
     color,
   };
 
-   if (id) {
-     await updateTask(newEvent, id)
-     onCloseEventForm();
-     renderWeek();
-     renderEvents();
-   } 
-   if(!id) {
-     await createTask(newEvent)
-     onCloseEventForm();
-     renderEvents();
-   }
-}
+  if (id) {
+    try {
+      await updateTask(newEvent, id);
+    } catch (e) {
+      alert('Internal Server Error');
+    }
+    onCloseEventForm();
+    renderWeek();
+    renderEvents();
+  }
+  if (!id) {
+    try {
+      await createTask(newEvent);
+    } catch (e) {
+      alert('Internal Server Error');
+    }
+    onCloseEventForm();
+    renderEvents();
+  }
+};
 
 export function initEventForm() {
   closeEventFormBtn.addEventListener('click', onCloseEventForm);

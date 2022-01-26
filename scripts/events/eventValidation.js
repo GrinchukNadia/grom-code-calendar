@@ -11,7 +11,7 @@ const validationMessage = document.createElement('div');
 validationMessage.classList.add('not-valid');
 eventFromTimeEl.append(validationMessage);
 
-export const eventValidator = async() => {
+export const eventValidator = async () => {
   const startValue = startEl.value || startEl.attributes.placeholder.value;
   const endValue = endEl.value || endEl.attributes.placeholder.value;
   const date = dateElem.value;
@@ -19,7 +19,12 @@ export const eventValidator = async() => {
   const startDate = getDateTime(date, startValue);
   const endDate = getDateTime(date, endValue);
 
-  const eventsAll = await getTasksList();
+  let eventsAll = [];
+  try {
+    eventsAll = await getTasksList();
+  } catch (e) {
+    alert('Internal Server Error');
+  }
 
   let valid = true;
 
@@ -53,4 +58,4 @@ export const eventValidator = async() => {
     submitBtnEl.removeAttribute('disabled');
   }
   return valid;
-}
+};

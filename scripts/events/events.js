@@ -1,8 +1,8 @@
-import { openPopup} from '../common/popup.js';
+import { openPopup } from '../common/popup.js';
 import { onCloseEventForm } from './createEvent.js';
 import { editEvent } from './editeEvent.js';
 
-export const handleEventClick = async(event) => {
+export const handleEventClick = async (event) => {
   if (!event) {
     return;
   }
@@ -11,7 +11,11 @@ export const handleEventClick = async(event) => {
 
   if (eventElement) {
     openPopup(event.pageX, event.pageY - window.scrollY);
-    await editEvent(idOfEvent);
+    try {
+      await editEvent(idOfEvent);
+    } catch (e) {
+      alert('Internal Server Error');
+    }
     onCloseEventForm();
   }
-}
+};

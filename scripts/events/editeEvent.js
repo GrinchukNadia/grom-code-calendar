@@ -20,7 +20,7 @@ const deleteEl = document.querySelector('.delete-event-btn');
 
 export const editEvent = async (eventId) => {
   const currentEvent = await getTask(eventId);
-   const {start, end, title, description} = currentEvent;
+  const { start, end, title, description } = currentEvent;
 
   const dayNow = addZeroBefore(new Date(start).getDate());
   const monthNow = addZeroBefore(new Date(start).getMonth() + 1);
@@ -38,7 +38,7 @@ export const editEvent = async (eventId) => {
   timeEl.innerHTML = `${timeStart} - ${timeEnd}`;
 
   editEl.addEventListener('click', () => {
-    openModal('', eventId)
+    openModal('', eventId);
     closePopup();
     timeStartEl.placeholder = ``;
     timeEndEl.placeholder = ``;
@@ -50,8 +50,12 @@ export const editEvent = async (eventId) => {
   });
 
   deleteEl.addEventListener('click', async () => {
+    try {
       await deleteTask(eventId);
-      renderWeek();
-      closePopup();
+    } catch (e) {
+      alert('Internal Server Error');
+    }
+    renderWeek();
+    closePopup();
   });
-}
+};

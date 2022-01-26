@@ -27,8 +27,12 @@ const createEventElement = (event) => {
 export const renderEvents = async () => {
   const weekElement = document.querySelector('.calendar__week');
 
-  const allEvents = await getTasksList();
-  console.log(allEvents)
+  let allEvents = [];
+  try {
+    allEvents = await getTasksList();
+  } catch (e) {
+    alert('Internal Server Error');
+  }
 
   const filteredEvents = allEvents.filter((value) => {
     const fullYearOfEvent = new Date(value.start).getFullYear();
@@ -48,7 +52,7 @@ export const renderEvents = async () => {
     );
     const time = new Date(el.start).getHours();
     let timeData = dayData.querySelector(`[data-time="${time}"]`);
-    timeData.innerHTML = ''
+    timeData.innerHTML = '';
     timeData.append(createEventElement(el));
   });
 };
