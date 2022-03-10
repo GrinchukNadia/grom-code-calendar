@@ -16,11 +16,7 @@ const endTimeElem = document.querySelector('[name="endTime"]');
 const descriptionElem = document.querySelector('[name="description"]');
 
 function clearEventForm() {
-  titleElem.value = '';
-  dateElem.value = '';
-  startTimeElem.value = '';
-  endTimeElem.value = '';
-  descriptionElem.value = '';
+  eventFormElem.reset();
 
   const allUncheck = document.querySelectorAll('.check');
   allUncheck.forEach((el, i) => {
